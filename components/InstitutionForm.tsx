@@ -47,10 +47,10 @@ const FormInputNumber: React.FC<{id: string, name: string, label: string, value:
 );
 
 
-const FormTextArea: React.FC<{id: string, label: string, value: string, onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void, rows?: number}> = ({ id, label, value, onChange, rows=3 }) => (
+const FormTextArea: React.FC<{id: string, label: string, value: string, onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void, rows?: number, placeholder?: string}> = ({ id, label, value, onChange, rows=3, placeholder }) => (
     <div>
         <label htmlFor={id} className="block text-sm font-medium text-slate-600 mb-1">{label}</label>
-        <textarea id={id} name={id} value={value} onChange={onChange} rows={rows} className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 transition duration-150" />
+        <textarea id={id} name={id} value={value} onChange={onChange} rows={rows} placeholder={placeholder} className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:ring-emerald-500 focus:border-emerald-500 transition duration-150" />
     </div>
 );
 
@@ -241,7 +241,7 @@ const InstitutionForm: React.FC<InstitutionFormProps> = ({ onSubmit, isLoading }
       )}
 
       <h3 className="text-lg font-semibold text-slate-800 border-b pb-2 pt-4">Lain-lain</h3>
-      <FormTextArea id="facilities" label="Fasilitas / Sarana Prasarana (pisahkan dengan koma)" value={formData.facilities} onChange={handleChange} />
+      <FormTextArea id="facilities" label="Fasilitas / Sarana Prasarana (pisahkan dengan koma)" value={formData.facilities} onChange={handleChange} placeholder="Contoh: Masjid, Ruang Kelas, Perpustakaan, Lapangan Olahraga" />
       <FormTextArea id="achievements" label="Prestasi (opsional, pisahkan dengan koma)" value={formData.achievements} onChange={handleChange} />
       <FormTextArea id="extracurriculars" label="Kegiatan Ekstrakurikuler (opsional, pisahkan dengan koma)" value={formData.extracurriculars || ''} onChange={handleChange} />
       <FormInput id="contact" label="Informasi Kontak (Telepon/Email/Website)" value={formData.contact} onChange={handleChange} />
